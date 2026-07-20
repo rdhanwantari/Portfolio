@@ -4,81 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 <body>
 
-   <header>
-    <h1>RISHI DHANWANTARI</h1>
-    <p>
-        <i class="fa-solid fa-code"></i> Software Engineering Student • 
-        <i class="fa-solid fa-laptop-code"></i> Application Developer • 
-        <i class="fa-solid fa-bug"></i> Troubleshooter
-    </p>
+    <!-- Dark Mode Toggle -->
+    <button id="toggle-theme">🌙</button>
 
-    <p class="tagline">
-        Experienced in building applications, designing forms and reports, 
-        and troubleshooting software issues using modern technologies.
-    </p>
-</header>
+    <!-- HEADER / HERO SECTION -->
+    <header>
+        <h1 id="typewriter"></h1>
 
-    <section id="about">
+        <p>
+            <i class="fa-solid fa-code"></i> Software Engineering Student • 
+            <i class="fa-solid fa-laptop-code"></i> Application Developer • 
+            <i class="fa-solid fa-bug"></i> Troubleshooter
+        </p>
+
+        <p class="tagline">
+            Experienced in building applications, designing forms and reports, updating legacy systems, 
+            and troubleshooting software issues using modern technologies.
+        </p>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-in">
         <h2>About Me</h2>
         <p>
             I am a motivated Software Engineering student with experience in Java, Python, JavaScript, and SQL.
-            I enjoy building scalable applications and learning new technologies.
+            I enjoy building scalable applications, solving problems, and learning new technologies.
+		Currently working on AI/Vibe Coding with Microsoft and Kaggle
+		
         </p>
     </section>
 
-<section id="experience">
-    <h2>Experience</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="fade-in">
+        <h2>Experience</h2>
 
-    <div class="experience-card">
-        <h3>Application Developer</h3>
-        <p><strong>Key Responsibilities:</strong></p>
-        <ul>
-            <li>Designed and developed interactive forms to streamline data entry and improve user workflows.</li>
-            <li>Created and customized reports for business insights, analytics, and operational tracking.</li>
-            <li>Updated and enhanced existing applications to improve performance, usability, and functionality.</li>
-            <li>Troubleshot software issues, identified root causes, and implemented effective solutions.</li>
-            <li>Collaborated with cross‑functional teams to gather requirements and deliver high‑quality features.</li>
-        </ul>
-    </div>
-</section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="project-card">
-            <h3>Project Personal Portfoliio Website</h3>
-            <p>Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Project Tic-Tac-Toe Game </h3>
-            <p>Designed and developed an object-oriented Java application.</p> 
-            <p>Implemented game logic, user interaction, and testing. </p>
-            <p>Applied software design principles and debugging techniques. </p>
-
-        </div>
-
-        <div class="project-card">
-            <h3>Project Graphing Tool </h3>
-            <p>Developed application components responsible for user interaction and input validation. </p>
+        <div class="experience-card">
+            <h3>Application Developer</h3>
+            <ul>
+                <li>Designed and developed interactive forms to streamline data entry and workflows.</li>
+                <li>Created and customized reports for analytics and business insights.</li>
+                <li>Updated and enhanced existing applications to improve performance and usability.</li>
+                <li>Troubleshot software issues and implemented effective solutions.</li>
+                <li>Collaborated with teams to gather requirements and deliver high‑quality features.</li>
+            </ul>
         </div>
     </section>
 
-    <section id="contact">
+    <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+        <h3 class="collapsible">Project - Personal Portfolio Website</h3>
+        <div class="content">
+            <p>Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript</p>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <h3 class="collapsible">Project - Tic-Tac-Toe Game</h3>
+        <div class="content">
+            <p>Designed and developed an object-oriented Java application.</p>
+            <p>Implemented game logic, user interaction, and testing.</p>
+            <p>Applied software design principles and debugging techniques.</p>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <h3 class="collapsible">Project - Graphing Tool</h3>
+        <div class="content">
+            <p>Developed application components responsible for user interaction and input validation.</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-in">
         <h2>Contact</h2>
         <p>Email: rdhanwantari@gmail.com</p>
-        <p>LinkedIn: Linkedin.com/in/rishi-dhanwantari </p>
+        <p>LinkedIn: Linkedin.com/in/rishi-dhanwantari</p>
         <p>GitHub: //rdhanwantari.github.io/Portfolio/</p>
     </section>
 
     <footer>
         <p>© 2026 Rishi Dhanwantari</p>
     </footer>
+
+    <!-- INTERACTIVITY SCRIPTS -->
+    <script>
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    });
+
+    // Dark Mode Toggle
+    document.getElementById("toggle-theme").onclick = () => {
+        document.body.classList.toggle("dark-mode");
+    };
+
+    // Typewriter Effect
+    const text = "Rishi Dhanwantari";
+    let i = 0;
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typewriter").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 80);
+        }
+    }
+    typeWriter();
+
+    // Scroll Fade‑In
+    const elements = document.querySelectorAll('.fade-in');
+    function reveal() {
+        elements.forEach(el => {
+            const top = el.getBoundingClientRect().top;
+            if (top < window.innerHeight - 50) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    // Collapsible Project Sections
+    document.querySelectorAll(".collapsible").forEach(item => {
+        item.addEventListener("click", () => {
+            item.classList.toggle("active");
+            const content = item.nextElementSibling;
+            content.classList.toggle("show");
+        });
+    });
+</script>
+
 
 </body>
 </html>
